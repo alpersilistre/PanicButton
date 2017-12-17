@@ -6,7 +6,7 @@ const botApiToken = '405926939:AAG-WEw7x6svDIkxj94z7D_Q6U13nzo09uQ'
 function sendMessage (message, callback) {
   
   request({
-    url: baseUrl + botApiToken + '/sendMessage?chat_id=479277008&text=' + message,
+    url:`${baseUrl}${botApiToken}/sendMessage?chat_id=479277008&text=${message}`,
     json: true
   }, (error, response, body) => {
   

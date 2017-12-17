@@ -5,7 +5,7 @@ iohook.on('keydown', event => {
   console.log(event);
 
   if(event.keycode === 28) {
-    telegram.sendMessage('Emergenct situation, help!', (errorMessage, results) => {
+    telegram.sendMessage('Emergency situation, help!', (errorMessage, results) => {
       if(errorMessage) {
         console.log(errorMessage);
       } else {
