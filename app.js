@@ -1,12 +1,16 @@
 const telegram = require('./telegram.js');
-const iohook = require('iohook');
+const keypress = require('keypress');
 
-iohook.on('keydown', event => {
-  console.log(event);
+keypress(process.stdin);
 
-  if(event.keycode === 28) {
+process.stdin.on('keypress', (ch, key) => {
+  console.log('got keypress', key);
+  if(key && key.ctrl && key.name === 'c') {
+    process.stdin.pause();
+    console.log('paused');
+  } else if(key && key.name === 'return') {
     telegram.sendMessage('Emergency situation, help!', (errorMessage, results) => {
-      if(errorMessage) {
+      if (errorMessage) {
         console.log(errorMessage);
       } else {
         console.log(JSON.stringify(results, undefined, 2));
@@ -15,4 +19,4 @@ iohook.on('keydown', event => {
   }
 });
 
-iohook.start();
+process.stdin.setRawMode(true);
