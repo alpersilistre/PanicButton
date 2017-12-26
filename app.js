@@ -32,15 +32,12 @@ let getUpdateLoop = setInterval(() => {
     if (errorMessage) {
       console.log(errorMessage);
     } else {
-      // console.log(results[0]);
-      // chatId = results[0].message.chat.id;
       chatId = results;
       clearInterval(getUpdateLoop);
       // fs.writeFile('chatId.txt', lyrics, (err) => {
       //   if (err) throw err;
       //   console.log('ChatId saved!');
       // });
-      // console.log('Chat Id saved...');
     }
   });
 }, 5000);
